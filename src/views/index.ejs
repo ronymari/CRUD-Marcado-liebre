@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: 'Inicio'}) %>
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	
+	<!-- Banner -->
+	<div class="banner"></div>
+
+	<!-- ultima visita -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Basado en tu última visita</h2>
+			</div>
+			<!-- Show the "visited" products -->
+			<% productsVisited.forEach(product => { %>
+				<%- include('./partials/cardProducts',{product}) %>
+			<% }) %>
+
+		</div>
+	</div>
+
+	<!-- Ofertas -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Ofertas</h2>
+			</div>
+			<!-- Show the "in-sale" products -->
+			<% products.filter(product => product.category === "in-sale").forEach(product  => { %>
+				<%- include('./partials/cardProducts',{product}) %>
+			<% }) %>
+			
+		</div>
+	</div>
+
+	<!-- footer -->
+	<%- include('partials/footer') %>
+
+</body>	
+</html>
